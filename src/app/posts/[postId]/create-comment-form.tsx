@@ -42,7 +42,7 @@ export default function CreateCommentForm({ postId }: { postId: string }) {
         type="submit"
         aria-disabled={isDisabled}
       >
-        Add comment
+        {formState.isSubmitting && "submitting..."} Add comment
       </button>
     </form>
   );
