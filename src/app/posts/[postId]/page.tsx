@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import CreateCommentForm from "./create-comment-form";
+import { CreateCommentForm } from "./comment-form";
 import Comments from "./comments";
 
 export default async function PostDetailsPage({
