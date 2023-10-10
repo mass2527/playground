@@ -10,3 +10,7 @@ export const createPostSchema = z.object({
     .min(8, { message: "Content is too short" })
     .max(200, { message: "Content is too long" }),
 });
+
+export const createCommentSchema = z.object({
+  content: z.string().min(1),
+});
