@@ -14,10 +14,12 @@ export default function CreatePostForm() {
   });
   const router = useRouter();
 
+  const isDisabled = formState.isSubmitting || !formState.isValid;
+
   const createPost: SubmitHandler<z.infer<typeof createPostSchema>> = async (
     data
   ) => {
-    if (formState.isSubmitting) {
+    if (isDisabled) {
       return;
     }
 
@@ -48,7 +50,7 @@ export default function CreatePostForm() {
       {formState.errors.content && (
         <span>{formState.errors.content.message}</span>
       )}
-      <button type="submit" aria-disabled={formState.isSubmitting}>
+      <button type="submit" aria-disabled={isDisabled}>
         {formState.isSubmitting && "submitting..."} Submit
       </button>
     </form>
