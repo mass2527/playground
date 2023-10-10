@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
 export default function CreateCommentForm({ postId }: { postId: string }) {
-  const { register, handleSubmit, formState } = useForm<
+  const { register, handleSubmit, formState, reset } = useForm<
     z.infer<typeof createCommentSchema>
   >({
     resolver: zodResolver(createCommentSchema),
@@ -32,6 +32,8 @@ export default function CreateCommentForm({ postId }: { postId: string }) {
       alert("Failed to add comment");
       return;
     }
+
+    reset();
   };
 
   return (
