@@ -2,6 +2,7 @@
 
 import { createCommentSchema } from "@/lib/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -11,6 +12,7 @@ export default function CreateCommentForm({ postId }: { postId: string }) {
   >({
     resolver: zodResolver(createCommentSchema),
   });
+  const router = useRouter();
 
   const isDisabled = formState.isSubmitting || !formState.isValid;
 
@@ -34,6 +36,7 @@ export default function CreateCommentForm({ postId }: { postId: string }) {
     }
 
     reset();
+    router.refresh();
   };
 
   return (
