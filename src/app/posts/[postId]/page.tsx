@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import CreateCommentForm from "./create-comment-form";
+import Comments from "./comments";
 
 export default async function PostDetailsPage({
   params,
@@ -29,6 +30,7 @@ export default async function PostDetailsPage({
       <p>{post.content}</p>
 
       <CreateCommentForm postId={params.postId} />
+      <Comments postId={params.postId} />
     </div>
   );
 }
